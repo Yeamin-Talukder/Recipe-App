@@ -1,4 +1,4 @@
-<h1 align="center">🍽️ Gourmet - Premium Recipe & Meal Planning App</h1>
+<h1 align="center">🍽️ Recipe App</h1>
 
 <p align="center">
   A stunning, dark-themed recipe application built with Flutter, Provider, and Firebase. 
