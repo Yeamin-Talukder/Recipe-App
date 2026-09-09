@@ -1,10 +1,16 @@
-# 🍽️ Recipe App 
+<h1 align="center">🍽️ Gourmet - Premium Recipe & Meal Planning App</h1>
+
+<p align="center">
+  A stunning, dark-themed recipe application built with Flutter, Provider, and Firebase. 
+  Features a vast database of recipes, smart search, weekly meal planning, and an immersive cooking mode.
+</p>
 
 <div align="center">
   
   ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
   ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
   ![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+  ![Provider](https://img.shields.io/badge/Provider-State_Management-blue?style=for-the-badge)
   
   <br>
 
@@ -15,31 +21,40 @@
 
 </div>
 
-## ✨ Features
+## ✨ Key Features
 
-- **Premium Dark UI**: A breathtaking, dark-mode first design inspired by "Current Detection" themes, featuring smooth micro-animations and a stunning neon-green accent.
-- **Vast Recipe Database**: 30+ curated, high-quality recipes spanning breakfasts, lunches, dinners, and desserts, complete with gorgeous Unsplash & Wikimedia images.
-- **Smart Search & Filters**: Easily find your favorite meals based on categories and prep time.
-- **Meal Planning**: Organize your week with an integrated meal planner calendar.
-- **Cooking Mode**: A distraction-free, step-by-step cooking view to guide you through the kitchen.
-- **Firebase Cloud Sync**: Secure Google Sign-In with real-time cloud data storage for favorites and meal plans.
-- **Guest Mode**: Try the app instantly without signing in.
+- 🎨 **Premium Dark UI**: A breathtaking, dark-mode first design featuring smooth micro-animations, glassmorphism, and vibrant green accents.
+- 🍳 **Vast Recipe Database**: 30+ curated, high-quality recipes spanning breakfasts, lunches, dinners, and desserts, complete with gorgeous high-res images.
+- 🔍 **Smart Search & Filters**: Effortlessly find your favorite meals based on categories and prep time.
+- 📅 **Weekly Meal Planner**: Organize your week with an integrated, intuitive meal planner calendar.
+- 👩‍🍳 **Immersive Cooking Mode**: A distraction-free, step-by-step cooking view to guide you seamlessly through the kitchen.
+- ☁️ **Firebase Cloud Sync**: Secure Google Sign-In with real-time cloud data storage for favorites and meal plans.
+- 👤 **Guest Mode**: Try the app instantly without signing in. Beautifully tailored prompts encourage users to create an account when trying to save favorites.
 
-## 📱 Screenshots
+---
+
+## 📱 App Screenshots
 
 <div align="center">
-  <!-- Note: Replace the src links with your actual GitHub hosted images! -->
-  <img src="https://via.placeholder.com/250x500.png?text=Home+Screen" width="200"/>
-  <img src="https://via.placeholder.com/250x500.png?text=Recipe+Details" width="200"/>
-  <img src="https://via.placeholder.com/250x500.png?text=Meal+Planner" width="200"/>
-  <img src="https://via.placeholder.com/250x500.png?text=Cooking+Mode" width="200"/>
+  <table>
+    <tr>
+      <td><img src="https://via.placeholder.com/250x500.png?text=Home+Screen" width="200"/></td>
+      <td><img src="https://via.placeholder.com/250x500.png?text=Recipe+Details" width="200"/></td>
+      <td><img src="https://via.placeholder.com/250x500.png?text=Meal+Planner" width="200"/></td>
+      <td><img src="https://via.placeholder.com/250x500.png?text=Cooking+Mode" width="200"/></td>
+    </tr>
+  </table>
+  <p><i>Note: Upload your own screenshots to your repository and replace the placeholder URLs above.</i></p>
 </div>
+
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- [Flutter](https://flutter.dev/docs/get-started/install) SDK
+- [Flutter](https://flutter.dev/docs/get-started/install) SDK (latest version)
 - Android Studio or VS Code
+- A Firebase Project (for Authentication & Firestore)
 
 ### Installation
 
@@ -54,27 +69,66 @@
    flutter pub get
    ```
 
-3. **Run the app**
+3. **Configure Firebase**
+   - Create a project on [Firebase Console](https://console.firebase.google.com/)
+   - Enable **Authentication** (Google Sign-In) and **Cloud Firestore**
+   - Run `flutterfire configure` to connect your project and generate the `firebase_options.dart` file.
+
+4. **Run the app**
    ```bash
    flutter run
    ```
+
+---
 
 ## 📦 Download APK
 
 You can download the latest optimized, production-ready APK directly from our [Releases page](https://github.com/Yeamin-Talukder/Recipe-App/releases).
 
-**Optimized File Size**: The app is compiled using AOT, obfuscated, and split per ABI (arm64-v8a, armeabi-v7a) to ensure the absolute smallest file size possible (often < 15MB).
+**Optimized File Size**: The app is compiled using AOT, heavily obfuscated, and split per ABI (`arm64-v8a`, `armeabi-v7a`) to ensure the absolute smallest file size possible (usually < 20MB despite including Firebase).
+
+---
+
+## 🏗️ Project Architecture
+
+This project follows a clean, feature-first Provider architecture to ensure separation of concerns:
+
+```text
+lib/
+├── core/             # Global constants, themes, and design tokens
+├── models/           # Dart data classes (Recipe, MealPlan, User)
+├── providers/        # State Management (Auth, Recipe, Favorite, Settings)
+├── repositories/     # Data Layer & Firebase Integrations
+├── services/         # Core external services (AuthService, FirestoreService)
+├── ui/
+│   ├── screens/      # Full-page views (Home, Recipe Details, Cooking Mode)
+│   └── widgets/      # Reusable UI components (RecipeCard, Banner)
+└── utils/            # Helper functions and Mock Data
+```
+
+---
 
 ## 🛠️ Tech Stack
 
 - **Framework**: [Flutter](https://flutter.dev/)
 - **Language**: [Dart](https://dart.dev/)
 - **Backend & Auth**: [Firebase](https://firebase.google.com/) (Firestore, Auth)
-- **State Management**: Provider
+- **State Management**: [Provider](https://pub.dev/packages/provider)
+- **Icons**: [Iconsax](https://pub.dev/packages/iconsax)
+
+---
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Yeamin-Talukder/Recipe-App/issues).
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
 
 ## 📄 License
 
