@@ -1,4 +1,4 @@
-# 🍽️ Recipe App (Current Detection UI)
+# 🍽️ Recipe App 
 
 <div align="center">
   
