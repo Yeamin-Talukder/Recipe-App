@@ -19,6 +19,11 @@
   [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=Yeamin-Talukder.Recipe-App)](https://github.com/Yeamin-Talukder/Recipe-App)
   [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 
+  <br><br>
+  <a href="https://github.com/Yeamin-Talukder/Recipe-App/releases/latest">
+    <img src="https://img.shields.io/badge/Download_Latest_App-%232ECC71?style=for-the-badge&logo=android&logoColor=white" alt="Download Latest App" />
+  </a>
+
 </div>
 
 ## ✨ Key Features
