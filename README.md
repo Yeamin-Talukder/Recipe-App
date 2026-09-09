@@ -8,9 +8,9 @@
   
   <br>
 
-  [![GitHub release (latest by date)](https://img.shields.io/github/v/release/your-username/recipe-app?style=flat-square)](https://github.com/your-username/recipe-app/releases)
-  [![GitHub all releases](https://img.shields.io/github/downloads/your-username/recipe-app/total?style=flat-square)](https://github.com/your-username/recipe-app/releases)
-  [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=your-username.recipe-app)](https://github.com/your-username/recipe-app)
+  [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Yeamin-Talukder/Recipe-App?style=flat-square)](https://github.com/Yeamin-Talukder/Recipe-App/releases)
+  [![GitHub all releases](https://img.shields.io/github/downloads/Yeamin-Talukder/Recipe-App/total?style=flat-square)](https://github.com/Yeamin-Talukder/Recipe-App/releases)
+  [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=Yeamin-Talukder.Recipe-App)](https://github.com/Yeamin-Talukder/Recipe-App)
   [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 
 </div>
@@ -45,8 +45,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/recipe-app.git
-   cd recipe-app
+   git clone https://github.com/Yeamin-Talukder/Recipe-App.git
+   cd Recipe-App
    ```
 
 2. **Install dependencies**
@@ -61,7 +61,7 @@
 
 ## 📦 Download APK
 
-You can download the latest optimized, production-ready APK directly from our [Releases page](https://github.com/your-username/recipe-app/releases).
+You can download the latest optimized, production-ready APK directly from our [Releases page](https://github.com/Yeamin-Talukder/Recipe-App/releases).
 
 **Optimized File Size**: The app is compiled using AOT, obfuscated, and split per ABI (arm64-v8a, armeabi-v7a) to ensure the absolute smallest file size possible (often < 15MB).
 
@@ -74,7 +74,7 @@ You can download the latest optimized, production-ready APK directly from our [R
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/your-username/recipe-app/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Yeamin-Talukder/Recipe-App/issues).
 
 ## 📄 License
 
