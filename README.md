@@ -2,7 +2,7 @@
 
   <img src="assets/logo.png" alt="Recipe App Logo" width="110" style="border-radius: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);"/>
 
-  # 🍽️ FlavorCraft — Smart Recipe & Meal Planner
+  # 🍽️ Recipe App
   
   <p align="center">
     <strong>A next-generation culinary companion built with Flutter, Provider, and Firebase.</strong><br>
