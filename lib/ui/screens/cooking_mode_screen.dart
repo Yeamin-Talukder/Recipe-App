@@ -77,9 +77,9 @@ class _CookingModeScreenState extends State<CookingModeScreen>
 
   Widget _buildCookingScreen(bool isDark) {
     final progress = (_currentStep + 1) / _totalSteps;
-    final cardBg = isDark ? const Color(0xFF1A1D2E) : Colors.white;
-    final closeBtnBg = isDark ? const Color(0xFF1A1D2E) : Colors.white;
-    final navBtnBg = isDark ? const Color(0xFF1A1D2E) : Colors.white;
+    final cardBg = isDark ? kDarkSurface : Colors.white;
+    final closeBtnBg = isDark ? kDarkSurface : Colors.white;
+    final navBtnBg = isDark ? kDarkSurface : Colors.white;
     final progressBg = isDark ? const Color(0xFF2A2D42) : const Color(0xFFEEEEEE);
 
     return SafeArea(

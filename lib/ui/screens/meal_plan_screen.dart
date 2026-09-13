@@ -166,7 +166,7 @@ class _MealPlanScreenState extends State<MealPlanScreen>
                       color: isSelected
                           ? kPrimaryColor
                           : (Theme.of(context).brightness == Brightness.dark
-                              ? const Color(0xFF1A1D2E)
+                              ? kDarkSurface
                               : Colors.white),
                       borderRadius: BorderRadius.circular(18),
                       boxShadow: isSelected
@@ -348,7 +348,7 @@ class _MealSlotCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final cardBg = isDark ? const Color(0xFF1A1D2E) : Colors.white;
+    final cardBg = isDark ? kDarkSurface : Colors.white;
     final color = _slotColors[slot]!;
     final slotLabel = slot[0].toUpperCase() + slot.substring(1);
 
@@ -400,13 +400,13 @@ class _MealSlotCard extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 15,
-                      color: isDark ? const Color(0xFFF0F2FA) : kTextPrimary,
+                      color: isDark ? kDarkTextPrimary : kTextPrimary,
                     ),
                   ),
                   const SizedBox(height: 3),
                   Text(
                     'Tap to add a recipe',
-                    style: TextStyle(fontSize: 13, color: isDark ? const Color(0xFF5C6880) : kTextLight),
+                    style: TextStyle(fontSize: 13, color: isDark ? kDarkTextLight : kTextLight),
                   ),
                 ],
               ),
@@ -474,7 +474,7 @@ class _MealSlotCard extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
-                    color: isDark ? const Color(0xFFF0F2FA) : kTextPrimary,
+                    color: isDark ? kDarkTextPrimary : kTextPrimary,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -541,11 +541,11 @@ class _PickRecipeSheetState extends State<_PickRecipeSheet> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final sheetBg = isDark ? const Color(0xFF1A1D2E) : Colors.white;
-    final rowBg = isDark ? const Color(0xFF252838) : const Color(0xFFF8F9FA);
+    final sheetBg = isDark ? kDarkSurface : Colors.white;
+    final rowBg = isDark ? const Color(0xFF252838) : kBackgroundColor;
     final dragHandle = isDark ? const Color(0xFF2A2D42) : Colors.grey.shade300;
-    final titleColor = isDark ? const Color(0xFFF0F2FA) : kTextPrimary;
-    final textLight = isDark ? const Color(0xFF5C6880) : kTextLight;
+    final titleColor = isDark ? kDarkTextPrimary : kTextPrimary;
+    final textLight = isDark ? kDarkTextLight : kTextLight;
     final allRecipes = context.read<RecipeProvider>().recipes;
     final filtered = _query.isEmpty
         ? allRecipes

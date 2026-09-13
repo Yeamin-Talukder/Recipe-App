@@ -7,9 +7,11 @@ import 'providers/favorite_provider.dart';
 import 'providers/meal_plan_provider.dart';
 import 'providers/quantity_provider.dart';
 import 'providers/recipe_provider.dart';
+import 'providers/review_provider.dart';
 import 'providers/settings_provider.dart';
 import 'repositories/meal_plan_repository.dart';
 import 'repositories/recipe_repository.dart';
+import 'repositories/review_repository.dart';
 import 'repositories/user_repository.dart';
 import 'services/auth_service.dart';
 import 'firebase_options.dart';
@@ -28,6 +30,7 @@ void main() async {
   final recipeRepository = RecipeRepository();
   final userRepository = UserRepository(authService: authService);
   final mealPlanRepository = MealPlanRepository(authService: authService);
+  final reviewRepository = ReviewRepository(authService: authService);
 
   runApp(
     MultiProvider(
@@ -49,6 +52,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => SettingsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ReviewProvider(repository: reviewRepository),
         ),
       ],
       child: const RecipeApp(),

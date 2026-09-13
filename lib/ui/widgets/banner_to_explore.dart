@@ -8,57 +8,81 @@ class BannerToExplore extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 180,
+      height: 186,
       decoration: BoxDecoration(
+        // Warm coral → amber gold gradient — rich, appetizing, premium
         gradient: const LinearGradient(
-          colors: [Color(0xFFFF6B35), Color(0xFFFF8C61), Color(0xFFFFAE88)],
+          colors: [
+            Color(0xFFD9532E),  // Deep burnt coral
+            Color(0xFFE8623A),  // Warm coral primary
+            Color(0xFFF5A623),  // Warm amber gold
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
+          stops: [0.0, 0.5, 1.0],
         ),
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: kPrimaryColor.withValues(alpha: 0.35),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
+            color: kPrimaryColor.withValues(alpha: 0.40),
+            blurRadius: 24,
+            spreadRadius: 0,
+            offset: const Offset(0, 10),
+          ),
+          BoxShadow(
+            color: kGradientEnd.withValues(alpha: 0.20),
+            blurRadius: 40,
+            offset: const Offset(0, 16),
           ),
         ],
       ),
       child: Stack(
         clipBehavior: Clip.antiAlias,
         children: [
-          // Decorative circles
+          // Decorative texture circles
           Positioned(
-            top: -30,
-            right: 120,
+            top: -24,
+            right: 100,
             child: Container(
-              width: 100,
-              height: 100,
+              width: 110,
+              height: 110,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white.withValues(alpha: 0.08),
+                color: Colors.white.withValues(alpha: 0.07),
               ),
             ),
           ),
           Positioned(
-            bottom: -40,
-            left: 140,
+            bottom: -48,
+            left: 130,
             child: Container(
-              width: 130,
-              height: 130,
+              width: 140,
+              height: 140,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white.withValues(alpha: 0.06),
               ),
             ),
           ),
+          Positioned(
+            top: 10,
+            right: 10,
+            child: Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white.withValues(alpha: 0.05),
+              ),
+            ),
+          ),
 
           // Text content
           Positioned(
-            top: 24,
+            top: 26,
             left: 22,
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.48,
+              width: MediaQuery.of(context).size.width * 0.47,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -68,10 +92,18 @@ class BannerToExplore extends StatelessWidget {
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.w800,
-                      height: 1.25,
+                      height: 1.28,
+                      letterSpacing: -0.3,
+                      shadows: [
+                        Shadow(
+                          color: Color(0x40000000),
+                          blurRadius: 8,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 18),
                   _ExploreButton(),
                 ],
               ),
@@ -80,15 +112,16 @@ class BannerToExplore extends StatelessWidget {
 
           // Food image
           Positioned(
-            right: -12,
-            bottom: -12,
+            right: -10,
+            bottom: -10,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.network(
                 "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
-                height: 175,
-                width: 165,
+                height: 178,
+                width: 168,
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => const SizedBox(),
               ),
             ),
           ),
@@ -113,11 +146,11 @@ class _ExploreButtonState extends State<_ExploreButton>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 120),
+      duration: const Duration(milliseconds: 130),
       lowerBound: 0.0,
       upperBound: 1.0,
     );
-    _scaleAnim = Tween(begin: 1.0, end: 0.94).animate(
+    _scaleAnim = Tween(begin: 1.0, end: 0.93).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
   }
@@ -143,9 +176,9 @@ class _ExploreButtonState extends State<_ExploreButton>
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.10),
-                blurRadius: 8,
-                offset: const Offset(0, 3),
+                color: Colors.black.withValues(alpha: 0.12),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
             ],
           ),

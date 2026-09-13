@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../core/constants.dart';
 
 class MySearchBar extends StatelessWidget {
   final ValueChanged<String>? onChanged;
@@ -10,9 +11,9 @@ class MySearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final bgColor = isDark ? const Color(0xFF1A1D2E) : Colors.white;
-    final iconColor = isDark ? const Color(0xFF5C6880) : Colors.grey;
-    final hintColor = isDark ? const Color(0xFF5C6880) : Colors.grey;
+    final bgColor = isDark ? kDarkSurface : Colors.white;
+    final iconColor = isDark ? kDarkTextLight : Colors.grey;
+    final hintColor = isDark ? kDarkTextLight : Colors.grey;
     final textColor = theme.colorScheme.onSurface;
 
     return Container(

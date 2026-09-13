@@ -67,10 +67,12 @@ class _RecipeCardState extends State<RecipeCard>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final cardColor = isDark ? const Color(0xFF1A1D2E) : kCardColor;
-    final textPrimary = isDark ? const Color(0xFFF0F2FA) : kTextPrimary;
-    final textLight   = isDark ? const Color(0xFF5C6880) : kTextLight;
-    final favUnselBg  = isDark ? const Color(0xFF252838) : Colors.white;
+    // Warm card colors matching new palette
+    final cardColor   = isDark ? kDarkCard : kCardColor;
+    final textPrimary = isDark ? kDarkTextPrimary : kTextPrimary;
+    final textLight   = isDark ? kDarkTextLight : kTextLight;
+    final favUnselBg  = isDark ? kDarkSurface : Colors.white;
+    final errorBg     = isDark ? kDarkSurface : const Color(0xFFF0EBE7);
 
     return GestureDetector(
       onTapDown: (_) => _pressController.forward(),
@@ -85,7 +87,6 @@ class _RecipeCardState extends State<RecipeCard>
                 RecipeDetailsScreen(recipe: widget.recipe),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
-              // Slide up from bottom + fade in
               final slideAnim = Tween<Offset>(
                 begin: const Offset(0, 0.08),
                 end: Offset.zero,
@@ -97,7 +98,6 @@ class _RecipeCardState extends State<RecipeCard>
                 parent: animation,
                 curve: Curves.easeOut,
               );
-              // Fade out going back
               final exitFade = Tween<double>(
                 begin: 1.0,
                 end: 0.96,
@@ -130,11 +130,18 @@ class _RecipeCardState extends State<RecipeCard>
             borderRadius: BorderRadius.circular(kCardRadius),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.07),
-                blurRadius: 14,
+                color: Colors.black.withValues(alpha: isDark ? 0.28 : 0.06),
+                blurRadius: 16,
                 spreadRadius: 0,
-                offset: const Offset(0, 5),
+                offset: const Offset(0, 6),
               ),
+              // Warm tinted subtle shadow in dark mode
+              if (isDark)
+                BoxShadow(
+                  color: kPrimaryColor.withValues(alpha: 0.04),
+                  blurRadius: 24,
+                  offset: const Offset(0, 8),
+                ),
             ],
           ),
           child: Column(
@@ -157,11 +164,11 @@ class _RecipeCardState extends State<RecipeCard>
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) =>
                               Container(
-                            color: isDark
-                                ? const Color(0xFF252838)
-                                : const Color(0xFFF0F0F0),
+                            color: errorBg,
                             child: Icon(Icons.broken_image,
-                                color: isDark ? Colors.white24 : Colors.grey),
+                                color: isDark
+                                    ? kDarkTextLight
+                                    : kTextLight),
                           ),
                         ),
                       ),
@@ -227,7 +234,8 @@ class _RecipeCardState extends State<RecipeCard>
                                           ? kFavoriteColor
                                               .withValues(alpha: 0.35)
                                           : Colors.black
-                                              .withValues(alpha: isDark ? 0.3 : 0.08),
+                                              .withValues(
+                                                  alpha: isDark ? 0.28 : 0.08),
                                       blurRadius: isFav ? 12 : 5,
                                     ),
                                   ],
@@ -278,8 +286,8 @@ class _RecipeCardState extends State<RecipeCard>
                     const SizedBox(height: 6),
                     Row(
                       children: [
-                        const Icon(Iconsax.star5,
-                            color: Color(0xFFFFA726), size: 13),
+                        Icon(Iconsax.star5,
+                            color: kStarColor, size: 13),
                         const SizedBox(width: 3),
                         Text(
                           '${widget.recipe.rating}',

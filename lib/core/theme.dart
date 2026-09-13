@@ -16,23 +16,24 @@ ThemeData darkTheme() {
 ThemeData _buildTheme(Brightness brightness) {
   final isDark = brightness == Brightness.dark;
 
-  final Color background  = isDark ? const Color(0xFF0F1117) : kBackgroundColor;
-  final Color surface     = isDark ? const Color(0xFF1C1F2E) : Colors.white;
-  final Color card        = isDark ? const Color(0xFF252839) : Colors.white;
-  final Color textPrimary = isDark ? const Color(0xFFF1F3F8) : kTextPrimary;
-  final Color textSec     = isDark ? const Color(0xFF9AA5BB) : kTextSecondary;
-  final Color textLight   = isDark ? const Color(0xFF6B7A96) : kTextLight;
-  final Color divider     = isDark ? const Color(0xFF2E3348) : const Color(0xFFEEEEEE);
+  // Surfaces — warm charcoal for dark, warm ivory for light
+  final Color background  = isDark ? kDarkBackground  : kBackgroundColor;
+  final Color surface     = isDark ? kDarkSurface     : Colors.white;
+  final Color card        = isDark ? kDarkCard        : Colors.white;
+  final Color textPrimary = isDark ? kDarkTextPrimary : kTextPrimary;
+  final Color textSec     = isDark ? kDarkTextSecondary : kTextSecondary;
+  final Color textLight   = isDark ? kDarkTextLight   : kTextLight;
+  final Color divider     = isDark ? kDarkDivider     : const Color(0xFFEDE8E3);
 
   final systemOverlay = isDark
       ? SystemUiOverlayStyle.light.copyWith(
           statusBarColor: Colors.transparent,
-          systemNavigationBarColor: const Color(0xFF0F1117),
+          systemNavigationBarColor: kDarkBackground,
           systemNavigationBarIconBrightness: Brightness.light,
         )
       : SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: Colors.transparent,
-          systemNavigationBarColor: Colors.white,
+          systemNavigationBarColor: kBackgroundColor,
           systemNavigationBarIconBrightness: Brightness.dark,
         );
 
@@ -47,6 +48,8 @@ ThemeData _buildTheme(Brightness brightness) {
       onPrimary: Colors.white,
       secondary: kPrimaryLight,
       onSecondary: Colors.white,
+      tertiary: kGradientEnd,
+      onTertiary: Colors.white,
       error: const Color(0xFFE53935),
       onError: Colors.white,
       surface: surface,
@@ -56,9 +59,11 @@ ThemeData _buildTheme(Brightness brightness) {
     dividerColor: divider,
     textTheme: GoogleFonts.interTextTheme().copyWith(
       displayLarge: GoogleFonts.inter(
-          fontSize: 32, fontWeight: FontWeight.w800, color: textPrimary),
+          fontSize: 32, fontWeight: FontWeight.w800, color: textPrimary,
+          letterSpacing: -0.5),
       displayMedium: GoogleFonts.inter(
-          fontSize: 26, fontWeight: FontWeight.w700, color: textPrimary),
+          fontSize: 26, fontWeight: FontWeight.w700, color: textPrimary,
+          letterSpacing: -0.3),
       titleLarge: GoogleFonts.inter(
           fontSize: 20, fontWeight: FontWeight.w700, color: textPrimary),
       titleMedium: GoogleFonts.inter(
@@ -85,8 +90,7 @@ ThemeData _buildTheme(Brightness brightness) {
         backgroundColor: kPrimaryColor,
         foregroundColor: Colors.white,
         elevation: 0,
-        padding:
-            const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(kButtonRadius)),
         textStyle:
@@ -96,18 +100,18 @@ ThemeData _buildTheme(Brightness brightness) {
     switchTheme: SwitchThemeData(
       thumbColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) return kPrimaryColor;
-        return isDark ? const Color(0xFF4A5070) : Colors.white;
+        return isDark ? const Color(0xFF5A4E48) : Colors.white;
       }),
       trackColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
-          return kPrimaryColor.withValues(alpha: 0.4);
+          return kPrimaryColor.withValues(alpha: 0.45);
         }
-        return isDark ? const Color(0xFF2E3348) : Colors.grey.shade300;
+        return isDark ? const Color(0xFF3D3530) : Colors.grey.shade300;
       }),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: surface,
+      fillColor: isDark ? kDarkSurface : const Color(0xFFF5F0EC),
       contentPadding:
           const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       border: OutlineInputBorder(
@@ -120,21 +124,36 @@ ThemeData _buildTheme(Brightness brightness) {
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
-        borderSide:
-            const BorderSide(color: kPrimaryColor, width: 1.5),
+        borderSide: const BorderSide(color: kPrimaryColor, width: 1.5),
+      ),
+      hintStyle: GoogleFonts.inter(
+        color: isDark ? kDarkTextLight : kTextLight,
+        fontSize: 14,
       ),
     ),
     dialogTheme: DialogThemeData(
       backgroundColor: card,
-      shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      elevation: 8,
     ),
     snackBarTheme: SnackBarThemeData(
-      backgroundColor: isDark ? const Color(0xFF252839) : const Color(0xFF1A1A2E),
+      backgroundColor: isDark ? kDarkCard : kTextPrimary,
       contentTextStyle: GoogleFonts.inter(color: Colors.white, fontSize: 14),
       behavior: SnackBarBehavior.floating,
-      shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+    ),
+    // Progress indicator
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: kPrimaryColor,
+    ),
+    // Chip theme for any category chips
+    chipTheme: ChipThemeData(
+      backgroundColor: isDark ? kDarkCard : const Color(0xFFF5F0EC),
+      selectedColor: kPrimaryColor,
+      secondarySelectedColor: kPrimaryColor,
+      labelStyle: GoogleFonts.inter(fontSize: 13, color: textSec),
+      side: BorderSide.none,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     ),
   );
 }

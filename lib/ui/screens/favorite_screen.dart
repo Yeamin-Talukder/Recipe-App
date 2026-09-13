@@ -64,17 +64,15 @@ class FavoriteScreen extends StatelessWidget {
   Widget _buildHeader(BuildContext context, bool isDark) {
     final authProvider = context.read<AuthProvider>();
     final user = authProvider.user;
-    final headerBg = isDark ? const Color(0xFF1A1D2E) : Colors.white;
-    final titleColor =
-        isDark ? const Color(0xFFF0F2FA) : const Color(0xFF1A1A2E);
-    final subtitleColor =
-        isDark ? const Color(0xFF6B7A96) : const Color(0xFF9E9E9E);
-    final countBg = isDark
+    final headerBg      = isDark ? kDarkSurface : Colors.white;
+    final titleColor    = isDark ? kDarkTextPrimary   : kTextPrimary;
+    final subtitleColor = isDark ? kDarkTextSecondary : kTextSecondary;
+    final countBg  = isDark
         ? kFavoriteColor.withValues(alpha: 0.15)
         : const Color(0xFFFFECE4);
     final avatarBg = isDark
-        ? kPrimaryColor.withValues(alpha: 0.15)
-        : const Color(0xFFFFF3E0);
+        ? kPrimaryColor.withValues(alpha: 0.18)
+        : const Color(0xFFFFF0E8);
 
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 20, 16, 16),
@@ -209,9 +207,9 @@ class FavoriteScreen extends StatelessWidget {
 
   Widget _buildEmpty(BuildContext context, bool isDark) {
     final titleColor =
-        isDark ? const Color(0xFFF0F2FA) : const Color(0xFF1A1A2E);
+        isDark ? kDarkTextPrimary : kTextPrimary;
     final subtitleColor =
-        isDark ? const Color(0xFF9AA5BB) : const Color(0xFF9E9E9E);
+        isDark ? kDarkTextSecondary : kTextSecondary;
     final emptyBg = isDark
         ? kFavoriteColor.withValues(alpha: 0.12)
         : const Color(0xFFFFECE4);
@@ -279,9 +277,9 @@ class FavoriteScreen extends StatelessWidget {
 
   Widget _buildGuestPrompt(BuildContext context, bool isDark) {
     final titleColor =
-        isDark ? const Color(0xFFF0F2FA) : const Color(0xFF1A1A2E);
+        isDark ? kDarkTextPrimary : kTextPrimary;
     final subtitleColor =
-        isDark ? const Color(0xFF9AA5BB) : const Color(0xFF9E9E9E);
+        isDark ? kDarkTextSecondary : kTextSecondary;
     final emptyBg = isDark
         ? kPrimaryColor.withValues(alpha: 0.12)
         : const Color(0xFFE8F5E9);
@@ -380,9 +378,9 @@ class FavoriteScreen extends StatelessWidget {
   }
 
   void _showSignOutDialog(BuildContext context, bool isDark) {
-    final dialogBg = isDark ? const Color(0xFF1A1D2E) : Colors.white;
+    final dialogBg = isDark ? kDarkSurface : Colors.white;
     final titleColor =
-        isDark ? const Color(0xFFF0F2FA) : const Color(0xFF1A1A2E);
+        isDark ? kDarkTextPrimary : kTextPrimary;
     final cancelBg =
         isDark ? const Color(0xFF252838) : const Color(0xFFF3F4F6);
 
@@ -434,7 +432,7 @@ class FavoriteScreen extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 14,
                         color: isDark
-                            ? const Color(0xFF9AA5BB)
+                            ? kDarkTextSecondary
                             : kTextSecondary,
                         height: 1.5),
                   ),

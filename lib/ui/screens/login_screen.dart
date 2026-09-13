@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../core/constants.dart';
 import '../../providers/auth_provider.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -46,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 34,
                   fontWeight: FontWeight.w800,
-                  color: Color(0xFF1A1A2E),
+                  color: kTextPrimary,
                   letterSpacing: -0.5,
                 ),
               ),
@@ -174,7 +175,7 @@ class LoginScreen extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xFF1A1A2E),
+                                        color: kTextPrimary,
                                       ),
                                     ),
                                   ],

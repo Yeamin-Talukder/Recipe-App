@@ -17,8 +17,8 @@ class SettingsScreen extends StatelessWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
-    final bgColor = theme.scaffoldBackgroundColor;
-    final cardColor = isDark ? const Color(0xFF1E2235) : Colors.white;
+    final bgColor   = theme.scaffoldBackgroundColor;
+    final cardColor  = isDark ? kDarkCard : Colors.white;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
@@ -121,7 +121,7 @@ class _SectionLabel extends StatelessWidget {
         fontSize: 11,
         fontWeight: FontWeight.w700,
         letterSpacing: 1.2,
-        color: isDark ? const Color(0xFF6B7A96) : kTextLight,
+        color: isDark ? kDarkTextSecondary : kTextLight,
       ),
     );
   }
@@ -167,7 +167,7 @@ class _GuestSignInCardState extends State<_GuestSignInCard>
         ? const Color(0xFF2A2D42)
         : kPrimaryColor.withValues(alpha: 0.08);
     final subtitleColor =
-        isDark ? const Color(0xFF9AA5BB) : kTextSecondary;
+        isDark ? kDarkTextSecondary : kTextSecondary;
 
     return AnimatedBuilder(
       animation: _shimmerAnim,
@@ -385,7 +385,7 @@ class _ProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final subtitleColor = isDark ? const Color(0xFF9AA5BB) : kTextSecondary;
+    final subtitleColor = isDark ? kDarkTextSecondary : kTextSecondary;
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -677,7 +677,7 @@ class _ToggleRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textColor = isDark ? const Color(0xFFF1F3F8) : kTextPrimary;
-    final subtitleColor = isDark ? const Color(0xFF9AA5BB) : kTextLight;
+    final subtitleColor = isDark ? kDarkTextSecondary : kTextLight;
     final iconBg = isDark
         ? kPrimaryColor.withValues(alpha: 0.15)
         : kPrimaryColor.withValues(alpha: 0.10);
@@ -742,7 +742,7 @@ class _LinkRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textColor = isDark ? const Color(0xFFF1F3F8) : kTextPrimary;
-    final trailColor = isDark ? const Color(0xFF6B7A96) : kTextLight;
+    final trailColor = isDark ? kDarkTextSecondary : kTextLight;
     final iconBg = isDark
         ? kPrimaryColor.withValues(alpha: 0.15)
         : kPrimaryColor.withValues(alpha: 0.10);
@@ -839,7 +839,7 @@ class _SignOutRow extends StatelessWidget {
   void _showSignOutDialog(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final dialogBg =
-        isDark ? const Color(0xFF1E2235) : Colors.white;
+        isDark ? kDarkCard : Colors.white;
     showGeneralDialog(
       context: context,
       barrierDismissible: true,
@@ -898,7 +898,7 @@ class _SignOutRow extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 14,
                         color: isDark
-                            ? const Color(0xFF9AA5BB)
+                            ? kDarkTextSecondary
                             : kTextSecondary,
                         height: 1.5,
                       ),

@@ -83,16 +83,14 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final textPrimary =
-        isDark ? const Color(0xFFF0F2FA) : kTextPrimary;
-    final textSecondary =
-        isDark ? const Color(0xFF9AA5BB) : kTextSecondary;
+    final textPrimary   = isDark ? kDarkTextPrimary   : kTextPrimary;
+    final textSecondary = isDark ? kDarkTextSecondary : kTextSecondary;
 
     return SafeArea(
       bottom: false,
       child: RefreshIndicator(
         color: kPrimaryColor,
-        backgroundColor: isDark ? const Color(0xFF1A1D2E) : Colors.white,
+        backgroundColor: isDark ? kDarkCard : Colors.white,
         onRefresh: _onRefresh,
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(

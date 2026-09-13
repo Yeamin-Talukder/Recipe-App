@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/constants.dart';
 
 class MyIconButton extends StatelessWidget {
   final IconData icon;
@@ -17,8 +18,8 @@ class MyIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bgColor = isDark ? const Color(0xFF1A1D2E) : Colors.white;
-    final defaultIconColor = isDark ? const Color(0xFFF0F2FA) : Colors.black;
+    final bgColor = isDark ? kDarkSurface : Colors.white;
+    final defaultIconColor = isDark ? kDarkTextPrimary : Colors.black;
 
     return IconButton(
       style: IconButton.styleFrom(

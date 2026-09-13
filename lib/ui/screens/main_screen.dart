@@ -82,7 +82,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
 
   Widget _buildBottomNav() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final navColor = isDark ? const Color(0xFF1E2235) : Colors.white;
+    final navColor = isDark ? kDarkNavBar : Colors.white;
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 20),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
@@ -183,7 +183,7 @@ class _NavBarItemState extends State<_NavBarItem>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final inactiveColor = isDark ? const Color(0xFF5C6880) : kTextLight;
+    final inactiveColor = isDark ? kDarkTextLight : kTextLight;
 
     return GestureDetector(
       onTap: widget.onTap,

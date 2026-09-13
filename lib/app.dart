@@ -14,7 +14,7 @@ class RecipeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final settings = context.watch<SettingsProvider>();
     return MaterialApp(
-      title: 'Food Recipe',
+      title: 'Recipe App',
       debugShowCheckedModeBanner: false,
       theme: appTheme(),
       darkTheme: darkTheme(),

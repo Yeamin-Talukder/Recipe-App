@@ -76,8 +76,9 @@ class _CategoryPillState extends State<_CategoryPill>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final inactiveBg = isDark ? const Color(0xFF1A1D2E) : Colors.white;
-    final inactiveText = isDark ? const Color(0xFF9AA5BB) : kTextSecondary;
+    // Warm inactive background — fits the warm charcoal/ivory palette
+    final inactiveBg   = isDark ? kDarkCard : const Color(0xFFF0EBE7);
+    final inactiveText = isDark ? kDarkTextSecondary : kTextSecondary;
 
     return GestureDetector(
       onTapDown: (_) => _pressController.forward(),
@@ -99,15 +100,16 @@ class _CategoryPillState extends State<_CategoryPill>
             boxShadow: widget.isSelected
                 ? [
                     BoxShadow(
-                      color: kPrimaryColor.withValues(alpha: 0.35),
-                      blurRadius: 12,
-                      offset: const Offset(0, 4),
+                      color: kPrimaryColor.withValues(alpha: 0.38),
+                      blurRadius: 14,
+                      offset: const Offset(0, 5),
                     ),
                   ]
                 : [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: isDark ? 0.25 : 0.05),
-                      blurRadius: 6,
+                      color: Colors.black
+                          .withValues(alpha: isDark ? 0.20 : 0.04),
+                      blurRadius: 5,
                       offset: const Offset(0, 2),
                     ),
                   ],

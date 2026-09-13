@@ -14,15 +14,13 @@ class HomeAppBar extends StatelessWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
-    final greetingColor = isDark
-        ? const Color(0xFF6B7A96)
-        : const Color(0xFF9E9E9E);
-    final titleColor = isDark
-        ? const Color(0xFFF0F2FA)
-        : const Color(0xFF1A1A2E);
+    // Warm-palette greeting and title colors
+    final greetingColor = isDark ? kDarkTextSecondary : kTextSecondary;
+    final titleColor    = isDark ? kDarkTextPrimary   : kTextPrimary;
+    // Warm tinted avatar background
     final avatarBg = isDark
-        ? kPrimaryColor.withValues(alpha: 0.15)
-        : const Color(0xFFFFF3E0);
+        ? kPrimaryColor.withValues(alpha: 0.18)
+        : const Color(0xFFFFF0E8);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,6 +45,7 @@ class HomeAppBar extends StatelessWidget {
                   fontWeight: FontWeight.w800,
                   height: 1.15,
                   color: titleColor,
+                  letterSpacing: -0.5,
                 ),
               ),
             ],
@@ -54,15 +53,22 @@ class HomeAppBar extends StatelessWidget {
         ),
         // User avatar
         Container(
-          width: 44,
-          height: 44,
+          width: 46,
+          height: 46,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: avatarBg,
             border: Border.all(
-              color: kPrimaryColor.withValues(alpha: 0.3),
+              color: kPrimaryColor.withValues(alpha: 0.35),
               width: 2,
             ),
+            boxShadow: [
+              BoxShadow(
+                color: kPrimaryColor.withValues(alpha: isDark ? 0.15 : 0.10),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
           child: user?.photoURL != null
               ? ClipOval(

@@ -4,14 +4,16 @@ import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants.dart';
 import '../../models/recipe.dart';
+import '../../providers/auth_provider.dart';
 import '../../providers/favorite_provider.dart';
 import '../../providers/meal_plan_provider.dart';
 import '../../providers/quantity_provider.dart';
+import '../../providers/review_provider.dart';
 import '../widgets/my_icon_button.dart';
 import '../widgets/quantity_increment_decrement.dart';
+import '../widgets/review_section.dart';
 import 'cooking_mode_screen.dart';
 import '../../core/guest_helper.dart';
-import '../../providers/auth_provider.dart';
 
 class RecipeDetailsScreen extends StatefulWidget {
   final Recipe recipe;
@@ -28,7 +30,7 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen>
   late List<Animation<Offset>> _itemSlideAnimations;
   late List<Animation<double>> _itemFadeAnimations;
 
-  static const int _sectionCount = 6;
+  static const int _sectionCount = 7;
 
   @override
   void initState() {
@@ -68,6 +70,13 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen>
     });
 
     _contentController.forward();
+
+    // Load reviews for this recipe
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<ReviewProvider>().loadReviews(widget.recipe.id);
+      }
+    });
   }
 
   @override
@@ -99,7 +108,7 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen>
     final imageHeight = (screenHeight * 0.42).clamp(280.0, 420.0);
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final scaffoldBg = isDark ? const Color(0xFF0F1117) : Colors.white;
+    final scaffoldBg = isDark ? kDarkBackground : Colors.white;
     return Scaffold(
       backgroundColor: scaffoldBg,
       body: Stack(
@@ -386,6 +395,13 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen>
                                 ),
                               ],
                             )),
+                        const SizedBox(height: 26),
+
+                        // 6: Reviews
+                        _stagger(
+                          6,
+                          ReviewSection(recipeId: widget.recipe.id),
+                        ),
                         const SizedBox(height: 110),
                       ],
                     ),
@@ -484,7 +500,7 @@ class _IngredientRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final outerBg = isDark ? const Color(0xFF1E2235) : const Color(0xFFF8F9FA);
+    final outerBg = isDark ? kDarkCard : kBackgroundColor;
     final innerBg = isDark ? const Color(0xFF252838) : Colors.white;
     return Container(
       padding: const EdgeInsets.all(10),
@@ -699,7 +715,7 @@ class _FavoriteButtonState extends State<_FavoriteButton>
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final favUnselBg = isDark ? const Color(0xFF1A1D2E) : Colors.white;
+    final favUnselBg = isDark ? kDarkSurface : Colors.white;
     final favUnselBorder =
         isDark ? const Color(0xFF2A2D42) : Colors.grey.shade200;
 
@@ -798,9 +814,9 @@ class _AddToMealPlanSheetState extends State<_AddToMealPlanSheet> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final sheetBg = isDark ? const Color(0xFF1A1D2E) : Colors.white;
-    final chipInactive = isDark ? const Color(0xFF252838) : const Color(0xFFF8F9FA);
-    final chipInactiveText = isDark ? const Color(0xFF9AA5BB) : kTextSecondary;
+    final sheetBg = isDark ? kDarkSurface : Colors.white;
+    final chipInactive = isDark ? const Color(0xFF252838) : kBackgroundColor;
+    final chipInactiveText = isDark ? kDarkTextSecondary : kTextSecondary;
     final dragHandle = isDark ? const Color(0xFF2A2D42) : Colors.grey.shade300;
     return Container(
       decoration: BoxDecoration(
@@ -829,13 +845,13 @@ class _AddToMealPlanSheetState extends State<_AddToMealPlanSheet> {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w800,
-              color: isDark ? const Color(0xFFF0F2FA) : kTextPrimary,
+              color: isDark ? kDarkTextPrimary : kTextPrimary,
             ),
           ),
           const SizedBox(height: 6),
           Text(
             widget.recipe.name,
-            style: TextStyle(fontSize: 14, color: isDark ? const Color(0xFF9AA5BB) : kTextSecondary),
+            style: TextStyle(fontSize: 14, color: isDark ? kDarkTextSecondary : kTextSecondary),
           ),
           const SizedBox(height: 22),
 
@@ -843,7 +859,7 @@ class _AddToMealPlanSheetState extends State<_AddToMealPlanSheet> {
           Text(
             'Day',
             style: TextStyle(
-                fontWeight: FontWeight.w700, fontSize: 14, color: isDark ? const Color(0xFFF0F2FA) : kTextPrimary),
+                fontWeight: FontWeight.w700, fontSize: 14, color: isDark ? kDarkTextPrimary : kTextPrimary),
           ),
           const SizedBox(height: 10),
           SingleChildScrollView(
@@ -885,7 +901,7 @@ class _AddToMealPlanSheetState extends State<_AddToMealPlanSheet> {
           Text(
             'Meal',
             style: TextStyle(
-                fontWeight: FontWeight.w700, fontSize: 14, color: isDark ? const Color(0xFFF0F2FA) : kTextPrimary),
+                fontWeight: FontWeight.w700, fontSize: 14, color: isDark ? kDarkTextPrimary : kTextPrimary),
           ),
           const SizedBox(height: 10),
           Row(

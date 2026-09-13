@@ -111,4 +111,37 @@ class FirestoreService {
         .doc(documentId)
         .delete();
   }
+
+  /// Run an atomic Firestore transaction.
+  Future<T> runTransaction<T>(
+    Future<T> Function(Transaction txn) updateFunction,
+  ) {
+    return _db.runTransaction(updateFunction);
+  }
+
+  /// Stream a subcollection ordered by a field.
+  Stream<List<T>> streamSubcollection<T>({
+    required String parentCollection,
+    required String parentId,
+    required String subcollection,
+    required T Function(String id, Map<String, dynamic> data) builder,
+    String orderByField = 'createdAt',
+    bool descending = true,
+  }) {
+    return _db
+        .collection(parentCollection)
+        .doc(parentId)
+        .collection(subcollection)
+        .orderBy(orderByField, descending: descending)
+        .snapshots()
+        .map((snapshot) => snapshot.docs
+            .map((doc) => builder(doc.id, doc.data()))
+            .toList());
+  }
+
+  /// Get a direct DocumentReference for use in transactions.
+  DocumentReference docRef(String path) => _db.doc(path);
+
+  /// Get a CollectionReference
+  CollectionReference collRef(String path) => _db.collection(path);
 }
