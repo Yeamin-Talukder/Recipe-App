@@ -57,6 +57,8 @@
 ## 📱 App Showcase
 
 <div align="center">
+  <video src="screen%20record.mp4" width="280"></video>
+  <br/><br/>
   <table>
     <thead>
       <tr>

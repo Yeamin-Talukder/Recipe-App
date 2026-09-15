@@ -86,6 +86,7 @@ key.properties
 
 # Large Files
 *.mp4
+!screen record.mp4
 *.mov
 *.avi
 *.mkv
