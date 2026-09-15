@@ -57,10 +57,63 @@
 ## 📱 App Showcase
 
 <div align="center">
-  <video src="screen%20record.mp4" width="300" controls autoplay loop muted></video>
+  <video src="screen%20record.mp4" width="280" controls autoplay loop muted></video>
+  <br/><br/>
+  
+  <table>
+    <thead>
+      <tr>
+        <th align="center">🏠 Home &amp; Explore</th>
+        <th align="center">❤️ Saved Favourites</th>
+        <th align="center">📅 Smart Meal Planner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="center">
+          <img src="assets/screenshots/home_screen.jpg" width="230" alt="Home Screen" style="border-radius: 16px;"/>
+        </td>
+        <td align="center">
+          <img src="assets/screenshots/favorites_screen.jpg" width="230" alt="Favourites Screen" style="border-radius: 16px;"/>
+        </td>
+        <td align="center">
+          <img src="assets/screenshots/meal_plan_screen.jpg" width="230" alt="Meal Planner" style="border-radius: 16px;"/>
+        </td>
+      </tr>
+      <tr>
+        <td align="center"><b>Smart Search &amp; Categories</b></td>
+        <td align="center"><b>Instant Cloud-Synced Recipes</b></td>
+        <td align="center"><b>Weekly Breakfast, Lunch &amp; Dinner</b></td>
+      </tr>
+    </tbody>
+  </table>
+
   <br/>
-  <p><em>Watch the Recipe App in action!</em></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th align="center">🌙 Dark Theme</th>
+        <th align="center">☀️ Light Theme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="center">
+          <img src="assets/screenshots/settings_dark_screen.jpg" width="250" alt="Dark Theme" style="border-radius: 16px;"/>
+        </td>
+        <td align="center">
+          <img src="assets/screenshots/settings_light_screen.jpg" width="250" alt="Light Theme" style="border-radius: 16px;"/>
+        </td>
+      </tr>
+      <tr>
+        <td align="center"><b>Warm Charcoal &amp; Coral Accents</b></td>
+        <td align="center"><b>Warm Ivory &amp; Minimalist</b></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
 
 ---
 
