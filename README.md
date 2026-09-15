@@ -57,7 +57,9 @@
 ## 📱 App Showcase
 
 <div align="center">
-  <video src="https://github.com/Yeamin-Talukder/Recipe-App/raw/main/screen%20record.mp4" width="280" controls autoplay loop muted></video>
+  
+https://github.com/Yeamin-Talukder/Recipe-App/blob/main/screen%20record.mp4
+
   <br/><br/>
   
   <table>
