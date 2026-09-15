@@ -24,9 +24,10 @@ class LoginScreen extends StatelessWidget {
                 height: 140,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
+                  color: const Color(0xFFE84614),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFFFF6B35).withValues(alpha: 0.15),
+                      color: const Color(0xFFE84614).withValues(alpha: 0.35),
                       blurRadius: 30,
                       spreadRadius: 8,
                     )
@@ -34,8 +35,10 @@ class LoginScreen extends StatelessWidget {
                 ),
                 child: ClipOval(
                   child: Image.asset(
-                    'assets/logo.png',
+                    'assets/logo_adaptive_fg.png',
                     fit: BoxFit.cover,
+                    width: 140,
+                    height: 140,
                   ),
                 ),
               ),
@@ -43,7 +46,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 36),
 
               const Text(
-                'Recipe App',
+                'Food Recipe',
                 style: TextStyle(
                   fontSize: 34,
                   fontWeight: FontWeight.w800,

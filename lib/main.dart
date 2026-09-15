@@ -39,8 +39,9 @@ void main() async {
           create: (_) => app_auth.AuthProvider(authService: authService),
         ),
         ChangeNotifierProvider(
-          create: (_) => RecipeProvider(repository: recipeRepository)..fetchRecipes(),
+          create: (_) => RecipeProvider(repository: recipeRepository)..subscribeToRecipes(),
         ),
+
         ChangeNotifierProvider(
           create: (_) => FavoriteProvider(repository: userRepository)..fetchFavorites(),
         ),

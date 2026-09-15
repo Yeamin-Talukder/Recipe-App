@@ -144,4 +144,22 @@ class FirestoreService {
 
   /// Get a CollectionReference
   CollectionReference collRef(String path) => _db.collection(path);
+
+  /// Stream an entire top-level collection ordered by a field.
+  Stream<List<T>> streamCollection<T>({
+    required String collectionPath,
+    required T Function(String id, Map<String, dynamic> data) builder,
+    Query Function(Query query)? queryBuilder,
+  }) {
+    Query query = _db.collection(collectionPath);
+    if (queryBuilder != null) {
+      query = queryBuilder(query);
+    }
+    return query.snapshots().map(
+          (snapshot) => snapshot.docs
+              .map((doc) => builder(doc.id, doc.data() as Map<String, dynamic>))
+              .toList(),
+        );
+  }
 }
+

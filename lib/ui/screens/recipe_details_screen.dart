@@ -203,30 +203,39 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen>
                             )),
                         const SizedBox(height: 14),
 
-                        // Rating row
+                        // Rating row — live data from ReviewProvider
                         _stagger(
                             1,
-                            Row(
-                              children: [
-                                const Icon(Iconsax.star5,
-                                    color: Color(0xFFFFA726), size: 18),
-                                const SizedBox(width: 5),
-                                Text(
-                                  '${recipe.rating}',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                const Text('/5  ',
-                                    style: TextStyle(
-                                        fontSize: 13, color: kTextSecondary)),
-                                Text(
-                                  '(${recipe.reviews} Reviews)',
-                                  style: const TextStyle(
-                                      fontSize: 13),
-                                ),
-                              ],
+                            Consumer<ReviewProvider>(
+                              builder: (context, reviewProvider, _) {
+                                final liveAvg = reviewProvider.reviews.isNotEmpty
+                                    ? reviewProvider.averageRating
+                                    : recipe.rating.toDouble();
+                                final liveCount = reviewProvider.reviews.isNotEmpty
+                                    ? reviewProvider.reviews.length
+                                    : recipe.reviews;
+                                return Row(
+                                  children: [
+                                    const Icon(Iconsax.star5,
+                                        color: Color(0xFFFFA726), size: 18),
+                                    const SizedBox(width: 5),
+                                    Text(
+                                      liveAvg.toStringAsFixed(1),
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                    const Text('/5  ',
+                                        style: TextStyle(
+                                            fontSize: 13, color: kTextSecondary)),
+                                    Text(
+                                      '($liveCount ${liveCount == 1 ? "Review" : "Reviews"})',
+                                      style: const TextStyle(fontSize: 13),
+                                    ),
+                                  ],
+                                );
+                              },
                             )),
                         const SizedBox(height: 26),
 
